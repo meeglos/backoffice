@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Failure;
 
 class FailureController extends Controller
 {
@@ -13,7 +14,9 @@ class FailureController extends Controller
      */
     public function index()
     {
-        //
+        $failures = Failure::all();
+
+        return response()->json($failures);
     }
 
     /**
@@ -34,7 +37,14 @@ class FailureController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $failure = new Failure([
+          'agent_id' => $request->get('agent_id'),
+          'comment' => $request->get('comment'),
+          'registered_at' => $request->get('registered_at')
+        ]);
+        $failure->save();
+
+        return response()->json('Successfully added');
     }
 
     /**
@@ -56,7 +66,8 @@ class FailureController extends Controller
      */
     public function edit($id)
     {
-        //
+        $failure = Failure::find($id);
+        return response()->json($failure);
     }
 
     /**
@@ -68,7 +79,13 @@ class FailureController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $failure = Failure::find($id);
+        $failure->agent_id = $request->get('agent_id');
+        $failure->comment = $request->get('comment');
+        $failure->registered_at = $request->get('registered_at');
+        $failure->save();
+
+        return response()->json('Successfully Updated');
     }
 
     /**
@@ -79,6 +96,9 @@ class FailureController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $failure = Failure::find($id);
+        $failure->delete();
+
+      return response()->json('Successfully Deleted');
     }
 }

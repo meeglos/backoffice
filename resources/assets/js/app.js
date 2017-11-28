@@ -12,12 +12,25 @@ Vue.use(VueAxios, axios);
 
 import App from './components/App.vue';
 import Example from './components/Example.vue';
+import CreateFailure from './components/CreateFailure.vue';
+import DisplayFailure from './components/DisplayFailure.vue';
+import EditFailure from './components/EditFailure.vue';
 
 const routes = [
     {
-        name: 'Example',
+        name: 'CreateFailure',
+        path: '/failures/create',
+        component: CreateFailure
+    },
+    {
+        name: 'DisplayFailure',
         path: '/',
-        component: Example
+        component: DisplayFailure
+    },
+    {
+        name: 'EditFailure',
+        path: '/edit/:id',
+        component: EditFailure
     }
 ];
 
