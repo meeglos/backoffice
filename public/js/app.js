@@ -16603,7 +16603,7 @@ var render = function() {
       _c(
         "tbody",
         _vm._l(_vm.failures, function(failure) {
-          return _c("tr", [
+          return _c("tr", { key: failure.id }, [
             _c("td", [_vm._v(_vm._s(failure.id))]),
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(failure.agent_id))]),

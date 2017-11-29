@@ -21,7 +21,7 @@
             </thead>
 
             <tbody>
-                <tr v-for="failure in failures">
+                <tr v-for="failure in failures" :key="failure.id">
                     <td>{{ failure.id }}</td>
                     <td>{{ failure.agent_id }}</td>
                     <td>{{ failure.comment }}</td>
